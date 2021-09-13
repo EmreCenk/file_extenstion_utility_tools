@@ -11,8 +11,8 @@ def convert_all_to_png(path, new_extension = ".png" ):
 
     for file in os.listdir():
         name, type = os.path.splitext(file)
-        if type != ".png":
-            os.rename(name, name + ".png")
+        if type != new_extension:
+            os.rename(name, name + new_extension)
 
 
 
