@@ -5,7 +5,7 @@
 
 import os
 
-def convert_all_to_png(path: str, new_extension: str = ".png" ):
+def change_extension(path: str, new_extension: str = ".png" ):
     """
     :param path: path to the folder that contains all of the files
     :param new_extension: the new extension you want all the files to have
