@@ -39,23 +39,30 @@ def download_all(pic_list: str,
     index = 0
 
     if create_new:
+        # trying to create a new folder with the given name. If the folder exists, we add a number to the end of the folder name
+        # then try again
         while True:
-            try:
+            try: #trying to create the folder
                 pathOfFolder = os.path.join(folder_path, f"{new_folder_name}{index}")
                 os.mkdir(pathOfFolder)
                 os.chdir(pathOfFolder)
                 break
             except:
+                # folder name already exists, increment the number at the end by one, then try agani
                 index += 1
 
     else:
+        # don't need to create a new folder
         pathOfFolder = os.path.join(folder_path, new_folder_name)
         os.chdir(pathOfFolder)
 
+    # downloading all images:
     starting = len(os.listdir())
     for i in range(len(pic_list)):
+        #making the request for the image:
         response = requests.get(pic_list[i])
 
+        #writing the image to a file:
         file = open(f"d{starting + i}.png", "wb")
         file.write(response.content)
         file.close()
