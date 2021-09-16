@@ -21,10 +21,12 @@ def change_extension(path: str, new_extension: str = ".png" ):
 
 
 def download_all(pic_list,
-                 folder_path = r"",
+                 folder_path = r"C:\Users\emrec\Desktop\Emre1\Programming\stuff\things\dp_",
                  new_folder_name = "auto_download",
                  create_new = True):
+    original = os.getcwd()
 
+    os.chdir(folder_path)
 
     index = 0
 
@@ -49,5 +51,7 @@ def download_all(pic_list,
         file = open(f"d{starting + i}.png", "wb")
         file.write(response.content)
         file.close()
+
+    os.chdir(original)
 
 
