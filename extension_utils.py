@@ -4,7 +4,7 @@
 
 
 import os
-
+import requests
 def change_extension(path: str, new_extension: str = ".png" ):
     """
     :param path: path to the folder that contains all of the files
@@ -19,4 +19,16 @@ def change_extension(path: str, new_extension: str = ".png" ):
             os.rename(name, name + new_extension)
 
 
+
+def download_all(pic_list):
+
+
+
+    starting = len(os.listdir())
+    for i in range(len(pic_list)):
+        response = requests.get(pic_list[i])
+
+        file = open(f"d{starting + i}.png", "wb")
+        file.write(response.content)
+        file.close()
 
