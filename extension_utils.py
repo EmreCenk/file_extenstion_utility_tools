@@ -20,9 +20,27 @@ def change_extension(path: str, new_extension: str = ".png" ):
 
 
 
-def download_all(pic_list):
+def download_all(pic_list,
+                 folder_path = r"",
+                 new_folder_name = "auto_download",
+                 create_new = True):
 
 
+    index = 0
+
+    if create_new:
+        while True:
+            try:
+                pathOfFolder = os.path.join(folder_path, f"{new_folder_name}{index}")
+                os.mkdir(pathOfFolder)
+                os.chdir(pathOfFolder)
+                break
+            except:
+                index += 1
+
+    else:
+        pathOfFolder = os.path.join(folder_path, new_folder_name)
+        os.chdir(pathOfFolder)
 
     starting = len(os.listdir())
     for i in range(len(pic_list)):
@@ -31,4 +49,5 @@ def download_all(pic_list):
         file = open(f"d{starting + i}.png", "wb")
         file.write(response.content)
         file.close()
+
 
