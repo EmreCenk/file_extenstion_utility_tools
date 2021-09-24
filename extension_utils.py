@@ -5,6 +5,8 @@
 
 import os
 import requests
+from typing import Iterable
+
 def change_extension(path: str, new_extension: str = ".png" ):
     """
     :param path: path to the folder that contains all of the files
@@ -20,7 +22,7 @@ def change_extension(path: str, new_extension: str = ".png" ):
 
 
 
-def download_all(pic_list: str,
+def download_all(pic_list: Iterable[str],
                  folder_path: str = "",
                  new_folder_name: str = "auto_download",
                  create_new: bool = True):
